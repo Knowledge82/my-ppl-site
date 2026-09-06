@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.knowledge.mementomori",
+    "sha256_cert_fingerprints": [
+      "5E:C8:C2:C9:0F:AE:DE:70:B3:D1:E7:64:33:A4:89:3B:59:A5:3B:D9:90:0E:70:7A:26:3A:20:5D:47:08:64:B0"
+    ]
+  }
+}]
