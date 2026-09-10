@@ -35,6 +35,19 @@
   const isAuthCallback = window.location.pathname.startsWith("/auth-callback");
   const content = document.getElementById("content");
 
+  // ⚠️ Важно для безопасности: access_token/refresh_token лежат во
+  // fragment ссылки (после #) — сам браузер никогда не шлёт fragment
+  // на сервер (поэтому токен не попадает в логи GitHub Pages), но он
+  // остаётся ВИДИМЫМ в адресной строке, пока страница открыта. Если
+  // человек в этот момент скопирует/перешлёт ссылку — токен утечёт
+  // тому, кому её показали. Стираем fragment из адресной строки сразу
+  // же при загрузке — history.replaceState не перезагружает страницу
+  // и не отправляет ничего на сервер, просто меняет то, что видно в
+  // самом браузере.
+  if (isAuthCallback && window.location.hash) {
+    history.replaceState(null, "", window.location.pathname);
+  }
+
   if (isAuthCallback) {
     content.innerHTML = `
       <div class="icon">📱</div>
