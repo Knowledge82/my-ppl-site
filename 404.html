@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My People</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px;
+    text-align: center;
+    background: #FDF3E8;
+    color: #3D2817;
+  }
+  h1 { font-size: 22px; margin-bottom: 8px; max-width: 420px; }
+  p { color: #6B5744; max-width: 380px; line-height: 1.5; }
+  .icon { font-size: 48px; margin-bottom: 16px; }
+  a { color: #C4623F; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div id="content">
+    <!-- Заполняется скриптом ниже — GitHub Pages статический, но мы
+         можем определить точный путь на клиенте и показать разное
+         сообщение в зависимости от того, куда именно попал человек. -->
+  </div>
+
+<script>
+  const isAuthCallback = window.location.pathname.startsWith("/auth-callback");
+  const content = document.getElementById("content");
+
+  if (isAuthCallback) {
+    content.innerHTML = `
+      <div class="icon">📱</div>
+      <h1>Este enlace es para tu teléfono, no para el ordenador</h1>
+      <p>
+        Parece que abriste el enlace de inicio de sesión desde un ordenador.
+        Vuelve a la app <strong>My People</strong> en tu teléfono y solicita
+        un nuevo enlace — este ya no servirá aquí.
+      </p>
+    `;
+  } else {
+    content.innerHTML = `
+      <div class="icon">🤍</div>
+      <h1>Página no encontrada</h1>
+      <p>
+        Esta página no existe. Si buscas la app, está disponible en
+        Google Play. Si buscas la
+        <a href="/privacy.html">política de privacidad</a>, aquí tienes el enlace.
+      </p>
+    `;
+  }
+</script>
+</body>
+</html>
